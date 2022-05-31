@@ -11,6 +11,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CourseCatalogComponent } from './sections/course-catalog/course-catalog.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPageScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]
