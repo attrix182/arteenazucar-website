@@ -1,0 +1,51 @@
+<body class="text-center">
+    <div [formGroup]="formGroup" class="form-signin">
+      <img class="mb-4" alt="" width="85" />
+      <h3 class="m-2 text-primary " style="margin: -10p; text-align: center; font-size: 38px; font-family: Parisienne;">
+        <span class=""></span
+        >Arte 
+        <br /> en Azucar</h3>
+      <label for="inputEmail" class="sr-only">Email</label>
+      <input
+        [class]="isValidField('email')"
+        type="email"
+        id="inputEmail"
+        class="form-control"
+        placeholder="Email"
+        formControlName="email"
+        required
+        autofocus
+      />
+      <span *ngIf="showError('email')" class="invalid-feedback">
+        {{ getErrorMessages('email') }}
+    </span>
+      <label for="inputPassword" class="sr-only">Clave</label>
+      <input
+        [class]="isValidField('password')"
+        type="password"
+        id="inputPassword"
+        class="form-control"
+        formControlName="password"
+        placeholder="Clave"
+        required
+      />
+      <span *ngIf="showError('password')" class="invalid-feedback">
+        {{ getErrorMessages('password') }}
+    </span>
+    <div class="m-3">
+
+        <a href="">  ¿Recuperar contraseña?</a>
+    </div>
+ 
+      
+      <button
+        [disabled]="formGroup.invalid"
+        class="btn btn-lg btn-primary btn-block"
+        (click)="onLogin()"
+      >
+        INICIAR SESIÓN
+      </button>
+ 
+      <p class="mt-5 mb-3 text-muted">LS &copy;</p>
+    </div>
+  </body>

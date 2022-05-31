@@ -1,4 +1,6 @@
-
+body{
+  background-color: rgb(231, 225, 225);
+}
   
   
   .btn {
@@ -5500,3 +5502,19 @@
     }
   }
   
+
+  body::-webkit-scrollbar {
+    width: 0.5rem;
+  
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #888;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: #17A2B8;
+  }
+  body::-webkit-scrollbar-thumb:hover {
+    background: #17A2B8;
+  }

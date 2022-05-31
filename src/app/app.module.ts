@@ -7,6 +7,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { AboutUsComponent } from './sections/about-us/about-us.component';
+import { LoginComponent } from './pages/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CourseCatalogComponent } from './sections/course-catalog/course-catalog.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +18,16 @@ import { AboutUsComponent } from './sections/about-us/about-us.component';
     HomeComponent,
     NavbarComponent,
     TopbarComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    LoginComponent,
+    CourseCatalogComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
