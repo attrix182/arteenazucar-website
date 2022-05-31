@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CourseCatalogComponent } from './sections/course-catalog/course-catalog.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
