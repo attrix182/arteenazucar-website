@@ -12,6 +12,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CourseCatalogComponent } from './sections/course-catalog/course-catalog.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { SidebarComponent } from './pages/admin-dashboard/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -23,14 +27,17 @@ import { NgxPageScrollModule } from 'ngx-page-scroll';
     AboutUsComponent,
     LoginComponent,
     CourseCatalogComponent,
-    FooterComponent
+    FooterComponent,
+    AdminDashboardComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPageScrollModule
+    NgxPageScrollModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5148,11 +5148,18 @@ body{
       padding: 10px 0;
     }
   }
+
+  @media (max-width: 767px){
+  .navbar-expand-lg{
+    position: fixed !important;
+    width: 100%;
+  }
+}
   
   @media (min-width: 992px) {
     .navbar-light {
       border-radius: 60px;
-    }
+    } 
     #header-carousel,
     .page-header {
       margin-top: -45px;

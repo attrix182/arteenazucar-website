@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { FormValidationAbstract } from 'src/app/shared/form-validation-abstract';
 
 @Component({
@@ -12,18 +14,24 @@ export class LoginComponent  extends FormValidationAbstract implements OnInit {
 
   public user: any = {};
   public formGroup: FormGroup;
-  auth: any;
-  alertSVC: any;
+
 
   constructor(
     private FB: FormBuilder,
     private router: Router,
+    private authSVC:AuthService,
+    private alertSVC: AlertService
   ) {
     super();
   }
 
   ngOnInit(): void {
     this.initForm();
+    this.isLogged() ? this.router.navigate(['/admin-dashboard']) : null;
+  }
+
+  isLogged() {
+    return localStorage.getItem('token') ? true : false;
   }
 
   initForm() {
@@ -53,11 +61,14 @@ export class LoginComponent  extends FormValidationAbstract implements OnInit {
   }
 
   async onLogin() {
+  
     this.user = this.formGroup.value;
+   
     try {
-      const user = await this.auth.onLogin(this.user);
+      const user = await this.authSVC.onLogin(this.user);
+      console.log(user)
       if (user) {
-        this.router.navigate(['/panel']);
+        this.router.navigate(['/admin-dashboard']);
       }
     } catch (error) {
       switch (error.code) {
