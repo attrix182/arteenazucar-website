@@ -18,6 +18,11 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { AdminSidebarComponent } from './pages/admin-dashboard/admin-sidebar/admin-sidebar.component';
 import { DashboardComponent } from './pages/admin-dashboard/dashboard/dashboard.component';
 import { AdminNavbarComponent } from './pages/admin-dashboard/admin-navbar/admin-navbar.component';
+import { AdminCoursesComponent } from './pages/admin-dashboard/admin-courses/admin-courses.component';
+import { AdminProductsComponent } from './pages/admin-dashboard/admin-products/admin-products.component';
+import { ProductsTableComponent } from './pages/admin-dashboard/admin-products/products-table/products-table.component';
+import { ProductsCatalogComponent } from './sections/products-catalog/products-catalog.component';
+import { ProductCardComponent } from './sections/products-catalog/product-card/product-card.component';
 
 
 @NgModule({
@@ -33,7 +38,12 @@ import { AdminNavbarComponent } from './pages/admin-dashboard/admin-navbar/admin
     AdminDashboardComponent,
     AdminSidebarComponent,
     DashboardComponent,
-    AdminNavbarComponent
+    AdminNavbarComponent,
+    AdminCoursesComponent,
+    AdminProductsComponent,
+    ProductsTableComponent,
+    ProductsCatalogComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

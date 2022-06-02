@@ -1,5 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,8 +9,18 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.scss']
 })
-export class AdminDashboardComponent   {
+export class AdminDashboardComponent {
+  public section: string;
 
-constructor(){}
+  constructor(private router: Router, private location:Location) {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.handleSection();
+      }); 
+  }
 
+  handleSection() {
+    this.section = this.location.path().split('/')[1];
+  }
 }

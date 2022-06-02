@@ -3,10 +3,18 @@
 <div class="row">
 
     <div class="col-2">
-        <app-admin-sidebar></app-admin-sidebar>
+        <app-admin-sidebar (changeSection)="handleSection()"></app-admin-sidebar>
     </div>
     
-    <div class="col">
-        <app-dashboard></app-dashboard>
+    <div class="col" [ngSwitch]="section">
+        
+        <app-dashboard *ngSwitchCase="'dashboard'"></app-dashboard>
+        <app-admin-courses *ngSwitchCase="'admin-courses'"></app-admin-courses>
+        <app-admin-products *ngSwitchCase="'admin-products'"></app-admin-products>
+
+
     </div>
+
+
+
 </div>

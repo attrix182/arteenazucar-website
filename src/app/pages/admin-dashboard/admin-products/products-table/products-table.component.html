@@ -1,0 +1,41 @@
+<div class="container mt-5 prod" align="center">
+  <h2>Productos</h2>
+
+  <input
+    [(ngModel)]="searchParam"
+    (ngModelChange)="hacerBusqueda()"
+    type="text"
+    placeholder="Buscador inteligente"
+    class="form-control mb-2"
+  />
+
+  <table border="1" class="table table-dark">
+    <thead>
+      <tr>
+        <th>Foto</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="products">
+      <tr *ngFor="let uno of products">
+        <td class="image"><img src="{{ uno.image }}" /></td>
+        <td>{{ uno.name }}</td>
+        <td>{{ uno.description }}</td>
+        <td>${{ uno.price }}</td>
+        <!--  <td>
+            <button class="btn btn-info"><i class="fa fa-pencil"></i></button>
+          </td>
+          <td>
+            <button (click)="deleteItem(uno)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+          </td> -->
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!products" class="loading">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+
+</div>

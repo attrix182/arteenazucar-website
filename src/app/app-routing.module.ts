@@ -8,8 +8,13 @@ import { AuthGuard } from './shared/authguard.guard';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] }
-];
+  { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'admin-courses', component: AdminDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'admin-products', component: AdminDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'admin-users', component: AdminDashboardComponent, canActivate: [AuthGuard] },
+]
+
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes, {useHash: true}) ],

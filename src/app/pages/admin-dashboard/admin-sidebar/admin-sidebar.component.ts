@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,6 +9,14 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./admin-sidebar.component.scss']
 })
 export class AdminSidebarComponent {
+  @Output() changeSection = new EventEmitter<any>();
+  actualSection = this.router.url.split('/')[1];
 
- constructor(){}
+  constructor(private router: Router, private location: Location) {}
+
+  goTo(section: string) {
+    this.location.replaceState(`/${section}`);
+    this.actualSection = section;
+    this.changeSection.emit();
+  }
 }

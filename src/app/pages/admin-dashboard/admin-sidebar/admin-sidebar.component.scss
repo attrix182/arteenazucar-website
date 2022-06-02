@@ -1,13 +1,6 @@
 body {
   font-size: 0.875rem;
 }
-
-.feather {
-  width: 16px;
-  height: 16px;
-  vertical-align: text-bottom;
-}
-
 /*
    * Sidebar
    */
@@ -53,18 +46,18 @@ body {
   color: #333;
 }
 
-.sidebar .nav-link .feather {
+.sidebar .nav-link{
   margin-right: 4px;
-  color: #999;
+  color: rgb(0, 0, 0);
 }
 
+
+
+.sidebar .nav-link:hover ,
 .sidebar .nav-link.active {
-  color: #007bff;
-}
+  color: #17A2B8;
+  margin-left: 4px;
 
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  color: inherit;
 }
 
 .sidebar-heading {
@@ -76,3 +69,6 @@ body {
    * Navbar
    */
 
+.nav-link{
+  cursor: pointer;
+}
