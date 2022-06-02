@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  selector: 'app-admin-navbar',
+  templateUrl: './admin-navbar.component.html',
+  styleUrls: ['./admin-navbar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class AdminNavbarComponent implements OnInit {
 
   constructor(private authSVC:AuthService, private router:Router) { }
 
@@ -19,4 +19,5 @@ export class SidebarComponent implements OnInit {
     this.authSVC.LogOutCurrentUser();
     this.router.navigateByUrl('/');
   }
+
 }

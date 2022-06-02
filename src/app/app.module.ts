@@ -15,7 +15,9 @@ import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
-import { SidebarComponent } from './pages/admin-dashboard/sidebar/sidebar.component';
+import { AdminSidebarComponent } from './pages/admin-dashboard/admin-sidebar/admin-sidebar.component';
+import { DashboardComponent } from './pages/admin-dashboard/dashboard/dashboard.component';
+import { AdminNavbarComponent } from './pages/admin-dashboard/admin-navbar/admin-navbar.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { SidebarComponent } from './pages/admin-dashboard/sidebar/sidebar.compon
     CourseCatalogComponent,
     FooterComponent,
     AdminDashboardComponent,
-    SidebarComponent
+    AdminSidebarComponent,
+    DashboardComponent,
+    AdminNavbarComponent
   ],
   imports: [
     BrowserModule,
