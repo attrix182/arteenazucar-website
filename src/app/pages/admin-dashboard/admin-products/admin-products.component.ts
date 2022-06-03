@@ -6,32 +6,41 @@ import { StorageService } from 'src/app/services/storage.service';
   templateUrl: './admin-products.component.html',
   styleUrls: ['./admin-products.component.scss']
 })
-export class AdminProductsComponent implements OnInit, OnDestroy{
-
-  products:any[];
+export class AdminProductsComponent implements OnInit, OnDestroy {
+  products: any[];
   searchParam: string;
   public itemsAux: any = [];
+  textBtn: string;
+  showFormProducts: boolean = false;
 
-  constructor(private storageSVC:StorageService) { }
+  constructor(private storageSVC: StorageService) {}
 
   ngOnInit(): void {
-   this.getProducts().subscribe(products => {
+    this.getProducts().subscribe((products) => {
       this.products = products;
       console.log(this.products);
     });
-  
+
+    this.textBtn = 'Agregar productos';
+ 
   }
 
-  getProducts(){
+  showForm() {
+
+    this.showFormProducts = !this.showFormProducts;
+    this.showFormProducts ? (this.textBtn = 'Ver productos') : (this.textBtn = 'Agregar productos');
+  }
+
+  getProducts() {
     return this.storageSVC.GetAll('products');
   }
 
-  addProduct(){
-    this.storageSVC.Insert('products',{
+  addProduct() {
+    this.storageSVC.Insert('products', {
       id: '1',
       name: 'Product 1',
       price: '100',
-      description: 'Product 1 description',
+      description: 'Product 1 description'
     });
   }
 
@@ -47,10 +56,5 @@ export class AdminProductsComponent implements OnInit, OnDestroy{
 
   deleteItem(item: any) {}
 
-  
-
-  ngOnDestroy(): void {
- 
-  }
-
+  ngOnDestroy(): void {}
 }

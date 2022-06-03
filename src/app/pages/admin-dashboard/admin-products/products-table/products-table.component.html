@@ -16,6 +16,7 @@
         <th>Nombre</th>
         <th>Descripcion</th>
         <th>Precio</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody *ngIf="products">
@@ -24,12 +25,12 @@
         <td>{{ uno.name }}</td>
         <td>{{ uno.description }}</td>
         <td>${{ uno.price }}</td>
-        <!--  <td>
-            <button class="btn btn-info"><i class="fa fa-pencil"></i></button>
-          </td>
           <td>
-            <button (click)="deleteItem(uno)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-          </td> -->
+            
+            <button class="btn btn-info"><i class="fa fa-pencil"></i></button>
+   
+            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+          </td>
       </tr>
     </tbody>
   </table>

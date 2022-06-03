@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="card">
+    <h2 class="title">Agregar productos</h2>
+
+    <form [formGroup]="formGroup" class="form">
+      <div class="row">
+        <div class="col-6">
+          <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre" />
+        </div>
+
+        <div class="col-6">
+          <input type="number" class="form-control" formControlName="precio" placeholder="Precio" />
+        </div>
+
+        <div class="col-12">
+          <input type="text" class="form-control" formControlName="descripcion" placeholder="Descripcion" />
+        </div>
+
+        <div class="col-12">
+            <input type="text" class="form-control" formControlName="imagen" placeholder="Imagen" />
+          </div>
+
+          <div class="col-12">
+            <button class="btn btn-success mt-3 btn-block"(click)="addProduct()" [disabled]="formGroup.invalid" >Agregar</button>
+          </div>
+
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,1 +1,11 @@
-<app-products-table [products]="products" [productsSearch]="products"></app-products-table>
+
+<div class="container">
+    <div class="col mt-5">
+        <button class="btn btn-primary" (click)="showForm()">{{textBtn}}</button>
+    </div>
+</div>
+
+
+<app-products-table *ngIf="!showFormProducts" [products]="products" [productsSearch]="products"></app-products-table>
+
+<app-products-add *ngIf="showFormProducts"></app-products-add>

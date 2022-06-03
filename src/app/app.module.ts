@@ -23,6 +23,7 @@ import { AdminProductsComponent } from './pages/admin-dashboard/admin-products/a
 import { ProductsTableComponent } from './pages/admin-dashboard/admin-products/products-table/products-table.component';
 import { ProductsCatalogComponent } from './sections/products-catalog/products-catalog.component';
 import { ProductCardComponent } from './sections/products-catalog/product-card/product-card.component';
+import { ProductsAddComponent } from './pages/admin-dashboard/admin-products/products-add/products-add.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ProductCardComponent } from './sections/products-catalog/product-card/p
     AdminProductsComponent,
     ProductsTableComponent,
     ProductsCatalogComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductsAddComponent
   ],
   imports: [
     BrowserModule,
