@@ -23,3 +23,17 @@ img {
     }
 
 }
+
+.table-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+
+    button{
+        display: grid;
+        vertical-align: middle;
+        justify-content: center;    
+    }
+}

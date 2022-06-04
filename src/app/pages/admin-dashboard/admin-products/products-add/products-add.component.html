@@ -5,23 +5,24 @@
     <form [formGroup]="formGroup" class="form">
       <div class="row">
         <div class="col-6">
-          <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre" />
+          <input type="text" class="form-control" formControlName="name" placeholder="Nombre" />
         </div>
 
         <div class="col-6">
-          <input type="number" class="form-control" formControlName="precio" placeholder="Precio" />
+          <input type="number" class="form-control" formControlName="price" placeholder="Precio" />
         </div>
 
         <div class="col-12">
-          <input type="text" class="form-control" formControlName="descripcion" placeholder="Descripcion" />
+          <input type="text" class="form-control" formControlName="description" placeholder="Descripcion" />
         </div>
 
         <div class="col-12">
-            <input type="text" class="form-control" formControlName="imagen" placeholder="Imagen" />
+          <input type="file" accept="image/*" id="banner-upload" (change)="imagePreview($event)" >
+       
           </div>
 
           <div class="col-12">
-            <button class="btn btn-success mt-3 btn-block"(click)="addProduct()" [disabled]="formGroup.invalid" >Agregar</button>
+            <button class="btn btn-success mt-3 btn-block"(click)="addProduct()"  >Agregar</button>
           </div>
 
       </div>

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AlertService } from 'src/app/services/alert.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-products-table',
@@ -10,9 +12,21 @@ export class ProductsTableComponent implements OnInit {
   searchParam: string;
   @Input() productsSearch: any = [];
 
-  constructor() {}
+  constructor(private storageSVC:StorageService, private alertSvc:AlertService) {}
 
   ngOnInit(): void {}
+
+
+    async deleteProduct(product: any) {
+      console.log(product);
+      let confirm: any = false;
+      confirm = await this.alertSvc.confirmAlert();
+      if (confirm) {
+        this.storageSVC.Delete('products', product.id).then(() => {
+          this.alertSvc.alertCenter('info', 'El producto ha sido eliminado');
+        });
+      }
+    }
 
   hacerBusqueda() {
     if (this.searchParam === '') {

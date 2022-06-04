@@ -25,7 +25,6 @@ import { ProductsCatalogComponent } from './sections/products-catalog/products-c
 import { ProductCardComponent } from './sections/products-catalog/product-card/product-card.component';
 import { ProductsAddComponent } from './pages/admin-dashboard/admin-products/products-add/products-add.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +44,7 @@ import { ProductsAddComponent } from './pages/admin-dashboard/admin-products/pro
     ProductsTableComponent,
     ProductsCatalogComponent,
     ProductCardComponent,
-    ProductsAddComponent
+    ProductsAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +54,6 @@ import { ProductsAddComponent } from './pages/admin-dashboard/admin-products/pro
     NgxPageScrollModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
