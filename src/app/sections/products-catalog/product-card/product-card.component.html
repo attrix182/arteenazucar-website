@@ -3,7 +3,7 @@
     <h4 class="font-weight-bold text-white mb-0">${{ product.price }}</h4>
   </div>
   <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px">
-    <img class="rounded-circle w-100 h-100" src="{{ product.image }}" style="object-fit: cover" />
+    <img *ngIf="product.image"  class="rounded-circle w-100 h-100" src="{{ product.image }}" style="object-fit: cover" />
   </div>
   <h5 class="font-weight-bold mb-4">{{ product.name }}</h5>
   <a href="" class="btn btn-sm btn-secondary">Comprar</a>

@@ -17,14 +17,33 @@
         </div>
 
         <div class="col-12">
-          <input type="file" accept="image/*" id="banner-upload" (change)="imagePreview($event)" >
-       
+          <div>
+            <button id="banner-upload" (click)="compressFile()" hidden></button>
+            <label for="banner-upload" class="banner-upload-btn btn btn-info mt-2"
+              ><i class="fa fa-upload"> Imagen</i></label
+            >
           </div>
+        </div>
 
-          <div class="col-12">
-            <button class="btn btn-success mt-3 btn-block"(click)="addProduct()"  >Agregar</button>
-          </div>
+        <div class="col-12 text-center">
+          <h3>Vista previa:</h3>
+        </div>
 
+        <div class="col-12 preview-card">
+          
+          <app-product-card
+            [product]="{
+              name: formGroup.value.name,
+              description: formGroup.value.description,
+              price: formGroup.value.price,
+              image: imgResultAfterCompress
+            }"
+          ></app-product-card>
+        </div>
+
+        <div class="col-12">
+          <button class="btn btn-success mt-3 btn-block" (click)="addProduct()">Agregar</button>
+        </div>
       </div>
     </form>
   </div>

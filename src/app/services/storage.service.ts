@@ -10,6 +10,11 @@ import * as firebase from 'firebase/app';
 export class StorageService {
   public loadedImage: any;
 
+  public fotoCargada: any;
+  public foto: any;
+  imgResultBeforeCompress: string;
+  imgResultAfterCompress: string;
+
 
   constructor(private cloudFireStore: AngularFirestore, private storage: AngularFireStorage) {}
 
@@ -72,24 +77,24 @@ export class StorageService {
     post.id = this.cloudFireStore.createId();
 
     if (post.image) {
-      const filePath = `/imagenes/${post.id}/1.png`;
-      const ref = this.storage.ref(filePath);
-      const task = this.storage.upload(filePath, post.image).then(() => {
+      const filePath = `/products/${post.id}/image.jpeg`;
+      const ref = this.storage
+        .ref(filePath)
+        .putString(post.image, 'base64', { contentType: 'image/jpeg' })
+        .then(() => {
+          let storages = firebase.default.storage();
+          let storageRef = storages.ref();
+          let spaceRef = storageRef.child(filePath);
 
-        let storages = firebase.default.storage();
-        let storageRef = storages.ref();
-        let spaceRef = storageRef.child(filePath);
+          spaceRef.getDownloadURL().then((url) => {
+            this.fotoCargada = url;
+            this.fotoCargada = `${this.fotoCargada}`;
 
-        spaceRef.getDownloadURL().then((url) => {
-          this.loadedImage = url;
-          this.loadedImage = `${this.loadedImage}`;
+            post.image = this.fotoCargada;
 
-          post.image = this.loadedImage;
-
-          return this.cloudFireStore.collection(collectionName).doc(post.id).set(post);
-
+            return this.InsertCustomID(collectionName, post.id, post);
+          });
         });
-      });
     }
   }
 }
