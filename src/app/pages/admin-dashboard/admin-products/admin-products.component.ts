@@ -12,6 +12,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   public itemsAux: any = [];
   textBtn: string;
   showFormProducts: boolean = false;
+  productToEdit: any;
 
   constructor(private storageSVC: StorageService) {}
 
@@ -22,11 +23,9 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     });
 
     this.textBtn = 'Agregar productos';
- 
   }
 
   showForm() {
-
     this.showFormProducts = !this.showFormProducts;
     this.showFormProducts ? (this.textBtn = 'Ver productos') : (this.textBtn = 'Agregar productos');
   }
@@ -54,7 +53,16 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     });
   }
 
-  deleteItem(item: any) {}
+  editProduct(product: any) {
+    this.productToEdit = product;
+    this.showForm();
+    setTimeout(() => {
+      this.productToEdit = null;
+    }, 1000);
+  }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    console.log('destroy');
+    this.productToEdit = null;
+  }
 }

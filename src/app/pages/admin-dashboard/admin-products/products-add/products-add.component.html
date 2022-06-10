@@ -42,7 +42,8 @@
         </div>
 
         <div class="col-12">
-          <button class="btn btn-success mt-3 btn-block" (click)="addProduct()">Agregar</button>
+          <button *ngIf="!isEdit" class="btn btn-success mt-3 btn-block" (click)="addProduct()"  [disabled]="formGroup.invalid">Agregar</button>
+          <button *ngIf="isEdit" class="btn btn-success mt-3 btn-block" (click)="updateProduct()"  [disabled]="formGroup.invalid">Editar</button>
         </div>
       </div>
     </form>

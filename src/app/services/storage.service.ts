@@ -15,7 +15,6 @@ export class StorageService {
   imgResultBeforeCompress: string;
   imgResultAfterCompress: string;
 
-
   constructor(private cloudFireStore: AngularFirestore, private storage: AngularFireStorage) {}
 
   Insert(collectionName: string, data: any) {
@@ -72,15 +71,14 @@ export class StorageService {
     return this.cloudFireStore.collection(collectionName).doc(id).delete();
   }
 
-  InsertWithImage(collectionName: string, post: any) {
+  InsertWithImage(collectionName: string, product: any) {
+    product.id = this.cloudFireStore.createId();
 
-    post.id = this.cloudFireStore.createId();
-
-    if (post.image) {
-      const filePath = `/products/${post.id}/image.jpeg`;
+    if (product.image) {
+      const filePath = `/products/${product.id}/image.jpeg`;
       const ref = this.storage
         .ref(filePath)
-        .putString(post.image, 'base64', { contentType: 'image/jpeg' })
+        .putString(product.image, 'base64', { contentType: 'image/jpeg' })
         .then(() => {
           let storages = firebase.default.storage();
           let storageRef = storages.ref();
@@ -90,11 +88,37 @@ export class StorageService {
             this.fotoCargada = url;
             this.fotoCargada = `${this.fotoCargada}`;
 
-            post.image = this.fotoCargada;
+            product.image = this.fotoCargada;
 
-            return this.InsertCustomID(collectionName, post.id, post);
+            return this.InsertCustomID(collectionName, product.id, product);
           });
         });
     }
+  }
+
+  UpdateProduct(id: string, collectionName: string, product: any) {
+    const filePath = `/products/${id}/image.jpeg`;
+    const ref = this.storage
+      .ref(filePath)
+      .putString(product.image, 'base64', { contentType: 'image/jpeg' })
+      .then(() => {
+        let storages = firebase.default.storage();
+        let storageRef = storages.ref();
+        let spaceRef = storageRef.child(filePath);
+
+        spaceRef.getDownloadURL().then((url) => {
+          this.fotoCargada = url;
+          this.fotoCargada = `${this.fotoCargada}`;
+
+          product.image = this.fotoCargada;
+
+          return this.cloudFireStore.collection(collectionName).doc(id).update({
+            name: product.name,
+            description: product.description,
+            price: product.price,
+            image: product.image
+          });
+        });
+      });
   }
 }

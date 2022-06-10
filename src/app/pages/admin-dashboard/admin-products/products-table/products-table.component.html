@@ -27,7 +27,7 @@
         <td>${{ uno.price }}</td>
         <td>
           <div class="table-actions">
-            <button class="btn btn-info"><i class="fa fa-pen"></i></button>
+            <button class="btn btn-info" (click)="updateProduct(uno)"><i class="fa fa-pen"></i></button>
 
             <button class="btn btn-danger" (click)="deleteProduct(uno)"><i class="fa fa-trash"></i></button>
           </div>

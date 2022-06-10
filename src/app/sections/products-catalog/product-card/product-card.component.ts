@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-product-card',
@@ -9,9 +10,20 @@ export class ProductCardComponent implements OnInit {
 
   @Input() product: any;
 
-  constructor() { }
+  public showProduct: any;
+
+  @ViewChild('modalProduct', { read: TemplateRef })
+  modalProduct: TemplateRef<any>;
+
+  constructor( private modalSVC: NgbModal) { }
 
   ngOnInit(): void {
   }
+
+  openModalPost(product) {
+    this.showProduct = product;
+    this.modalSVC.open(this.modalProduct);
+  }
+
 
 }

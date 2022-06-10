@@ -25,6 +25,7 @@ import { ProductsCatalogComponent } from './sections/products-catalog/products-c
 import { ProductCardComponent } from './sections/products-catalog/product-card/product-card.component';
 import { ProductsAddComponent } from './pages/admin-dashboard/admin-products/products-add/products-add.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { NgxImageCompressService } from 'ngx-image-compress';
     FormsModule,
     ReactiveFormsModule,
     NgxPageScrollModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    NgbModule
   ],
   providers: [NgxImageCompressService],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AlertService } from 'src/app/services/alert.service';
 import { StorageService } from 'src/app/services/storage.service';
 
@@ -11,6 +11,7 @@ export class ProductsTableComponent implements OnInit {
   @Input() products: any[];
   searchParam: string;
   @Input() productsSearch: any = [];
+  @Output() goToEdit = new EventEmitter<any>();
 
   constructor(private storageSVC:StorageService, private alertSvc:AlertService) {}
 
@@ -26,6 +27,10 @@ export class ProductsTableComponent implements OnInit {
           this.alertSvc.alertCenter('info', 'El producto ha sido eliminado');
         });
       }
+    }
+
+     updateProduct(product: any) {
+      this.goToEdit.emit(product);
     }
 
   hacerBusqueda() {

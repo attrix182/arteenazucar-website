@@ -4,6 +4,11 @@
   </div>
 </div>
 
-<app-products-table *ngIf="!showFormProducts" [products]="products" [productsSearch]="products"></app-products-table>
+<app-products-table
+  *ngIf="!showFormProducts"
+  [products]="products"
+  [productsSearch]="products"
+  (goToEdit)="editProduct($event)"
+></app-products-table>
 
-<app-products-add *ngIf="showFormProducts"></app-products-add>
+<app-products-add *ngIf="showFormProducts" [productToEdit]="productToEdit"></app-products-add>

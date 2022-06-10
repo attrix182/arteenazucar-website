@@ -1,6 +1,17 @@
-.product-item{
-    width: 250px;
+.product-item {
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.btn-exit{
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }
