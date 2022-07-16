@@ -1,0 +1,41 @@
+<div class="container mt-5 prod" align="center">
+    <h2>Productos</h2>
+  
+    <input
+      [(ngModel)]="searchParam"
+      (ngModelChange)="hacerBusqueda()"
+      type="text"
+      placeholder="Buscador inteligente"
+      class="form-control mb-2"
+    />
+  
+    <table border="1" class="table table-dark text-center">
+      <thead>
+        <tr>
+
+          <th>Nombre</th>
+          <th>Rol</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="users">
+        <tr *ngFor="let uno of users">
+   
+          <td>{{ uno.name }}</td>
+          <td>{{ uno.rol | titlecase}}</td>
+          <td>
+            <div class="table-actions">
+              <button class="btn btn-info" (click)="updateProduct(uno)"><i class="fa fa-pen"></i></button>
+  
+              <button class="btn btn-danger" (click)="deleteProduct(uno)"><i class="fa fa-trash"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="!users" class="loading">
+      <div class="spinner-border text-primary" role="status"></div>
+    </div>
+  </div>
+  

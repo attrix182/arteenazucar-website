@@ -1,0 +1,33 @@
+.card{
+    border-radius: 18px;
+    box-shadow: inset 0 0 0 1px #e0e0e0;
+    margin-top: 20px;
+    background-color: #e0e0e0;
+
+    .title{
+        font-size: 20px;
+        margin: 25px 20px 0px 28px;
+    }
+}
+
+.form{
+    padding: 25px;
+    input{
+        margin-top: 10px;
+    }
+}
+
+.imgCover {
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  .preview-card{
+      display: flex;
+      justify-content: center;
+      padding: 15px;
+  }

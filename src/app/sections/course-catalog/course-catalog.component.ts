@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-course-catalog',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseCatalogComponent implements OnInit {
 
-  constructor() { }
+
+  courses: any;
+
+  constructor(private storageSVC:StorageService) { }
 
   ngOnInit(): void {
+   this.getCourses().subscribe(products => {
+      this.courses = products;
+      console.log(this.courses);
+    });
+  
+  }
+
+  getCourses(){
+    return this.storageSVC.GetAll('courses');
   }
 
 }
+

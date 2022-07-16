@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="card">
+      <h2 class="title">Agregar curso</h2>
+  
+      <form [formGroup]="formGroup" class="form">
+        <div class="row">
+          <div class="col-6">
+            <input type="text" class="form-control" formControlName="name" placeholder="Nombre" />
+          </div>
+  
+          <div class="col-6">
+            <input type="number" class="form-control" formControlName="price" placeholder="Precio" />
+          </div>
+  
+          <div class="col-12">
+            <input type="text" class="form-control" formControlName="description" placeholder="Descripcion" />
+          </div>
+  
+          <div class="col-12">
+            <div>
+              <button id="banner-upload" (click)="compressFile()" hidden></button>
+              <label for="banner-upload" class="banner-upload-btn btn btn-info mt-2"
+                ><i class="fa fa-upload"> Imagen</i></label
+              >
+            </div>
+          </div>
+  
+          <div class="col-12 text-center">
+            <h3>Vista previa:</h3>
+          </div>
+  
+          <div class="col-12 preview-card">
+            
+            <app-product-card
+              [product]="{
+                name: formGroup.value.name,
+                description: formGroup.value.description,
+                price: formGroup.value.price,
+                image: imgResultAfterCompress
+              }"
+            ></app-product-card>
+          </div>
+  
+          <div class="col-12">
+            <button *ngIf="!isEdit" class="btn btn-success mt-3 btn-block" (click)="addCourse()"  [disabled]="formGroup.invalid">Agregar</button>
+            <button *ngIf="isEdit" class="btn btn-success mt-3 btn-block" (click)="updateCourse()"  [disabled]="formGroup.invalid">Editar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  

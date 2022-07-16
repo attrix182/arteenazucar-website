@@ -71,7 +71,7 @@ export class StorageService {
     return this.cloudFireStore.collection(collectionName).doc(id).delete();
   }
 
-  InsertWithImage(collectionName: string, product: any) {
+  InsertProductWithImage(collectionName: string, product: any) {
     product.id = this.cloudFireStore.createId();
 
     if (product.image) {
@@ -91,6 +91,31 @@ export class StorageService {
             product.image = this.fotoCargada;
 
             return this.InsertCustomID(collectionName, product.id, product);
+          });
+        });
+    }
+  }
+
+  InsertCourseWithImage(collectionName: string, course: any) {
+    course.id = this.cloudFireStore.createId();
+
+    if (course.image) {
+      const filePath = `/courses/${course.id}/image.jpeg`;
+      const ref = this.storage
+        .ref(filePath)
+        .putString(course.image, 'base64', { contentType: 'image/jpeg' })
+        .then(() => {
+          let storages = firebase.default.storage();
+          let storageRef = storages.ref();
+          let spaceRef = storageRef.child(filePath);
+
+          spaceRef.getDownloadURL().then((url) => {
+            this.fotoCargada = url;
+            this.fotoCargada = `${this.fotoCargada}`;
+
+            course.image = this.fotoCargada;
+
+            return this.InsertCustomID(collectionName, course.id, course);
           });
         });
     }
@@ -117,6 +142,34 @@ export class StorageService {
             description: product.description,
             price: product.price,
             image: product.image
+          });
+        });
+      });
+  }
+
+
+
+  UpdateCourse(id: string, collectionName: string, course: any) {
+    const filePath = `/courses/${id}/image.jpeg`;
+    const ref = this.storage
+      .ref(filePath)
+      .putString(course.image, 'base64', { contentType: 'image/jpeg' })
+      .then(() => {
+        let storages = firebase.default.storage();
+        let storageRef = storages.ref();
+        let spaceRef = storageRef.child(filePath);
+
+        spaceRef.getDownloadURL().then((url) => {
+          this.fotoCargada = url;
+          this.fotoCargada = `${this.fotoCargada}`;
+
+          course.image = this.fotoCargada;
+
+          return this.cloudFireStore.collection(collectionName).doc(id).update({
+            name: course.name,
+            description: course.description,
+            price: course.price,
+            image: course.image
           });
         });
       });

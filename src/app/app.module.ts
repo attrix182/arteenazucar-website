@@ -26,6 +26,11 @@ import { ProductCardComponent } from './sections/products-catalog/product-card/p
 import { ProductsAddComponent } from './pages/admin-dashboard/admin-products/products-add/products-add.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CoursesAddComponent } from './pages/admin-dashboard/admin-courses/courses-add/courses-add.component';
+import { CoursesTableComponent } from './pages/admin-dashboard/admin-courses/courses-table/courses-table.component';
+import { AdminUsersComponent } from './pages/admin-dashboard/admin-users/admin-users.component';
+import { UsersTableComponent } from './pages/admin-dashboard/admin-users/users-table/users-table.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +52,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProductsCatalogComponent,
     ProductCardComponent,
     ProductsAddComponent,
+    CoursesAddComponent,
+    CoursesTableComponent,
+    AdminUsersComponent,
+    UsersTableComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

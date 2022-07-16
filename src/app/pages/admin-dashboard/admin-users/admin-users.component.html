@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="col mt-5">
+      <button class="btn btn-primary" (click)="showForm()">{{ textBtn }}</button>
+    </div>
+  </div>
+  
+  <app-users-table
+    *ngIf="true"
+    [users]="users"
+    [userSearch]="users"
+    (goToEdit)="editUser($event)"
+  ></app-users-table>
+  
+  <app-products-add *ngIf="false" [productToEdit]="productToEdit"></app-products-add>
+  

@@ -6,21 +6,21 @@ import { StorageService } from 'src/app/services/storage.service';
 import { FormValidator } from 'src/app/shared/form-validator';
 
 @Component({
-  selector: 'app-products-add',
-  templateUrl: './products-add.component.html',
-  styleUrls: ['./products-add.component.scss']
+  selector: 'app-courses-add',
+  templateUrl: './courses-add.component.html',
+  styleUrls: ['./courses-add.component.scss']
 })
-export class ProductsAddComponent extends FormValidator implements OnInit, OnDestroy {
+export class CoursesAddComponent extends FormValidator implements OnInit {
   filePath: string;
   image: File;
   selectImage: boolean = true;
   imgResultBeforeCompress: string;
   imgResultAfterCompress: string;
   imageUrl: string;
-  product: any;
-  isEdit: boolean = false;
+  course: any;
+  isEdit:boolean = false;
 
-  @Input() productToEdit = null;
+  @Input() courseToEdit = null;
 
   constructor(
     private FB: FormBuilder,
@@ -33,21 +33,22 @@ export class ProductsAddComponent extends FormValidator implements OnInit, OnDes
 
   ngOnInit(): void {
     this.initializeForm();
-    this.isEditVerify(this.productToEdit);
+    this.isEditVerify(this.courseToEdit);
   }
 
-  isEditVerify(productToEdit) {
-    if (productToEdit) {
+  isEditVerify(courseToEdit){
+    console.log(courseToEdit);
+    if (courseToEdit) {
       this.isEdit = true;
-      this.product = productToEdit;
+      this.course = courseToEdit;
       this.formGroup.setValue({
-        name: this.product.name,
-        price: this.product.price,
-        description: this.product.description,
-        image: this.product.image
+        name: this.course.name,
+        price: this.course.price,
+        description: this.course.description,
+        image: this.course.image
       });
 
-      this.imgResultAfterCompress = this.product.image;
+      this.imgResultAfterCompress = this.course.image;
       this.selectImage = false;
     }
   }
@@ -55,7 +56,6 @@ export class ProductsAddComponent extends FormValidator implements OnInit, OnDes
   definirMensajesError(): void {}
 
   compressFile() {
-    this.selectImage = true;
     this.imageCompress.uploadFile().then(({ image, orientation }) => {
       this.imgResultBeforeCompress = image;
       /* console.warn('Size in bytes was:', this.imageCompress.byteCount(image)); */
@@ -66,30 +66,25 @@ export class ProductsAddComponent extends FormValidator implements OnInit, OnDes
     });
   }
 
-  addProduct() {
+  addCourse() {
     console.log(this.formGroup.value);
-    let product = this.formGroup.value;
-    product.image = this.imgResultAfterCompress.split(/,(.+)/)[1];
-    this.storageSVC.InsertProductWithImage('products', product);
+    let course = this.formGroup.value;
+    course.image = this.imgResultAfterCompress.split(/,(.+)/)[1];
+    this.storageSVC.InsertCourseWithImage('courses', course);
     this.clearForm();
-    this.alertSVC.alertTop('success', 'Producto agregado con exito');
+    this.alertSVC.alertTop('success', 'Curso agregado con exito');
   }
 
-  updateProduct() {
-    let product = this.formGroup.value;
-
-    product.image = this.product.image;
-
-    product.image = this.imgResultAfterCompress.split(/,(.+)/)[1];
-
-    console.log(product);
-    this.storageSVC.UpdateProduct(this.product.id, 'products', product);
+  updateCourse(){
+    let course = this.formGroup.value;
+    course.image = this.imgResultAfterCompress.split(/,(.+)/)[1];
+    this.storageSVC.UpdateCourse(this.course.id, 'courses',  course);
     this.clearForm();
-    this.alertSVC.alertTop('success', 'Producto actualizado con exito');
+    this.alertSVC.alertTop('success', 'Curso actualizado con exito');
   }
 
   clearForm() {
-    this.productToEdit = null;
+    this.courseToEdit = null;
     this.formGroup.reset();
     this.imgResultAfterCompress = '';
   }
@@ -104,7 +99,7 @@ export class ProductsAddComponent extends FormValidator implements OnInit, OnDes
   }
 
   ngOnDestroy(): void {
-    console.log('destroy');
     this.clearForm();
   }
 }
+

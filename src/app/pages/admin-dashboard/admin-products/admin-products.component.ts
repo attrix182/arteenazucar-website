@@ -8,8 +8,6 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
   products: any[];
-  searchParam: string;
-  public itemsAux: any = [];
   textBtn: string;
   showFormProducts: boolean = false;
   productToEdit: any;
@@ -43,15 +41,6 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     });
   }
 
-  orderByPrice(order: string) {
-    this.products.sort((a, b) => {
-      if (order === 'asc') {
-        return a.price - b.price;
-      } else {
-        return b.price - a.price;
-      }
-    });
-  }
 
   editProduct(product: any) {
     this.productToEdit = product;

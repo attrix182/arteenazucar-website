@@ -1,1 +1,16 @@
-<p>admin-courses works!</p>
+<div class="container">
+    <div class="col mt-5">
+      <button class="btn btn-primary" (click)="showForm()">{{ textBtn }}</button>
+    </div>
+  </div>
+  
+  <app-courses-table
+    *ngIf="!showFormCourses"
+    [courses]="courses"
+    [coursesSearch]="courses"
+    (goToEdit)="editCourse($event)"
+  ></app-courses-table>
+  
+  
+  <app-courses-add *ngIf="showFormCourses" [courseToEdit]="courseToEdit"></app-courses-add>
+  
